@@ -1,0 +1,18 @@
+<h1>Listing Clients</h1>
+
+<table>
+  <tr>
+    <th>Alias</th>
+    <th>IP</th>
+    <th>Status Interval</th>
+  </tr>
+  
+<% @clients.each do |client| %>
+  <tr>
+    <td><%=h client.alias %></td>
+    <td><%=h client.ip %></td>
+    <td><%=h client.status_interval %></td>
+  </tr>
+<% end %>
+
+</table>

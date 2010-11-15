@@ -1,0 +1,24 @@
+<h1>New Client</h1>
+notice: <%= flash[:notice] %><br />
+error: <%= flash[:error] %><br />
+<% form_for(@client) do |f| %>
+  
+  <p>
+    <%= f.label :alias %><br />
+    <%= f.text_field :alias %>
+  </p>
+  
+  <p>
+    <%= f.label :ip %><br />
+    <%= f.text_field :ip %>
+  </p>
+  
+  <p>
+    <%= f.label :status_interval %><br />
+    <%= f.text_field :status_interval %>
+  </p>
+  
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
