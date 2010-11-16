@@ -80,4 +80,10 @@ class ClientsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  
+  def update_status
+    render :text => params.inspect
+    
+  end
 end
