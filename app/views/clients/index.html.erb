@@ -1,18 +1,24 @@
-<h1>Listing Clients</h1>
+<h1>Listing clients</h1>
 
 <table>
   <tr>
     <th>Alias</th>
-    <th>IP</th>
-    <th>Status Interval</th>
+    <th>Ip</th>
+    <th>Status interval</th>
   </tr>
-  
+
 <% @clients.each do |client| %>
   <tr>
     <td><%=h client.alias %></td>
     <td><%=h client.ip %></td>
     <td><%=h client.status_interval %></td>
+    <td><%= link_to 'Show', client %></td>
+    <td><%= link_to 'Edit', edit_client_path(client) %></td>
+    <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
-
 </table>
+
+<br />
+
+<%= link_to 'New client', new_client_path %>

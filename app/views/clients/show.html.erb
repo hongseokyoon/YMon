@@ -1,2 +1,18 @@
-<h1>Client#show</h1>
-<p>Find me in app/views/client/show.html.erb</p>
+<p>
+  <b>Alias:</b>
+  <%=h @client.alias %>
+</p>
+
+<p>
+  <b>Ip:</b>
+  <%=h @client.ip %>
+</p>
+
+<p>
+  <b>Status interval:</b>
+  <%=h @client.status_interval %>
+</p>
+
+
+<%= link_to 'Edit', edit_client_path(@client) %> |
+<%= link_to 'Back', clients_path %>
