@@ -9,12 +9,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101116030316) do
+ActiveRecord::Schema.define(:version => 20101116075809) do
 
   create_table "clients", :force => true do |t|
     t.string   "alias",                          :null => false
     t.string   "ip",                             :null => false
     t.integer  "status_interval", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "statuses", :force => true do |t|
+    t.integer  "client_id"
+    t.integer  "cpu"
+    t.integer  "mem"
+    t.datetime "time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
