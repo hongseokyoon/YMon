@@ -5,6 +5,8 @@
     <th>Alias</th>
     <th>IP</th>
     <th>Status interval</th>
+    <th>CPU Usagem(%)</th>
+    <th>Available memory(MB)</th>
   </tr>
 
 <% @clients.each do |client| %>
@@ -12,6 +14,8 @@
     <td><%=h client.alias %></td>
     <td><%=h client.ip %></td>
     <td><%=h client.status_interval %></td>
+    <td><div id="<%= "#{client.alias}_cpu" %>"></div></td>
+    <td><div id="<%= "#{client.alias}_mem" %>"></div></td>
     <td><%= link_to 'Show', client %></td>
     <td><%= link_to 'Edit', edit_client_path(client) %></td>
     <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>

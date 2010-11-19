@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  
+  map.connect 'clients/update_status', :conditions => {:method => :post}, :controller => "clients", :action => "update_status"
+  map.resources :clients
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -44,5 +45,5 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id.:format'
   
   map.root :controller => "clients"
-  map.resources :clients
+  
 end

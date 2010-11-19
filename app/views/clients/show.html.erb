@@ -1,3 +1,5 @@
+
+
 <p>
   <b>Alias:</b>
   <%=h @client.alias %>
@@ -16,3 +18,13 @@
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>
+
+<br />
+<%= periodically_call_remote :url => {:action => "update_graph", :client_id => @client.id}, :update => "cpu_usage", :frequency => 3 %>
+
+<div id="cpu_usage" style="display:none">
+</div>
+<div id="cpu_usage1">
+</div>
+<div id="cpu_usage2">
+</div>
