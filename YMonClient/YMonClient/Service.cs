@@ -120,7 +120,7 @@ namespace YMonClient
 			    }
 
                 _data.ClearStatus();
-            }			
+            }
 		}
 	}
 }

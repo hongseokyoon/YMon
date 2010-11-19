@@ -80,8 +80,7 @@ class ClientsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  
+    
   # POST /update_status
   def update_status
     client  = Client.find_by_ip(request.remote_ip.to_s)
