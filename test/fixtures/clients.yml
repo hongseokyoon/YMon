@@ -3,9 +3,7 @@
 one:
   alias: MyString
   ip: MyString
-  status_interval: 1
 
 two:
   alias: MyString
   ip: MyString
-  status_interval: 1

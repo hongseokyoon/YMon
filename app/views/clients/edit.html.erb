@@ -1,24 +1,6 @@
 <h1>Editing client</h1>
 
-<% form_for(@client) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :alias %><br />
-    <%= f.text_field :alias %>
-  </p>
-  <p>
-    <%= f.label :ip %><br />
-    <%= f.text_field :ip %>
-  </p>
-  <p>
-    <%= f.label :status_interval %><br />
-    <%= f.text_field :status_interval %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+<%= render 'form' %>
 
 <%= link_to 'Show', @client %> |
 <%= link_to 'Back', clients_path %>

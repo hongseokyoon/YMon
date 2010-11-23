@@ -1,21 +1,19 @@
+
 <h1>Listing clients</h1>
 
 <table>
   <tr>
     <th>Alias</th>
-    <th>IP</th>
-    <th>Status interval</th>
-    <th>CPU Usagem(%)</th>
-    <th>Available memory(MB)</th>
+    <th>Ip</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
 <% @clients.each do |client| %>
   <tr>
-    <td><%=h client.alias %></td>
-    <td><%=h client.ip %></td>
-    <td><%=h client.status_interval %></td>
-    <td><div id="<%= "#{client.alias}_cpu" %>"></div></td>
-    <td><div id="<%= "#{client.alias}_mem" %>"></div></td>
+    <td><%= client.alias %></td>
+    <td><%= client.ip %></td>
     <td><%= link_to 'Show', client %></td>
     <td><%= link_to 'Edit', edit_client_path(client) %></td>
     <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -25,4 +23,6 @@
 
 <br />
 
-<%= link_to 'New client', new_client_path %>
+<%= link_to 'New Client', new_client_path %>
+
+<canvas id="line9" width="475" height="350">[Please wait...]</canvas> 

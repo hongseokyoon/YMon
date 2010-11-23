@@ -1,4 +1,40 @@
+<script>
+  function draw_graph(canvas_id, data, ymin, ymax, ylabel)
+  {
 
+    var graph = new RGraph.Line(canvas_id, data);
+    graph.Set('chart.background.barcolor1', 'white');
+    graph.Set('chart.background.barcolor2', 'white');
+    graph.Set('chart.background.grid', true);
+    graph.Set('chart.linewidth', 1);
+    graph.Set('chart.gutter', 80);
+    graph.Set('chart.hmargin', 0);
+    graph.Set('chart.shadow', false);
+    graph.Set('chart.tickmarks', null);
+    graph.Set('chart.xticks', 20);
+    graph.Set('chart.colors', ['red', 'green', 'blue']);
+    graph.Set('chart.xaxispos', 'bottom');
+    graph.Set('chart.background.grid.autofit', true);
+    graph.Set('chart.background.grid.autofit.numhlines', 10);
+    graph.Set('chart.background.grid.autofit.numvlines', 10);
+
+    graph.Set('chart.ymin', ymin);
+    graph.Set('chart.ymax', ymax);
+    graph.Set('chart.title.yaxis', ylabel);
+    graph.Set('chart.text.size', 8);
+
+    graph.Draw();
+  }
+  
+  window.onload = function()
+  {    
+    //draw_line();
+    
+    setInterval(function(){
+        $('#graph').load('/clients/update_graph/<%= @client.id %>');
+      }, 3000);
+  }  
+</script>
 
 <p>
   <b>Alias:</b>
@@ -10,21 +46,12 @@
   <%=h @client.ip %>
 </p>
 
-<p>
-  <b>Status interval:</b>
-  <%=h @client.status_interval %>
-</p>
-
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>
 
 <br />
-<%= periodically_call_remote :url => {:action => "update_graph", :client_id => @client.id}, :update => "cpu_usage", :frequency => 3 %>
+<%#= periodically_call_remote :url => {:action => "update_graph", :client_id => @client.id}, :update => "cpu_usage", :frequency => 5 %>
 
-<div id="cpu_usage" style="display:none">
-</div>
-<div id="cpu_usage1">
-</div>
-<div id="cpu_usage2">
+<div id="graph">
 </div>

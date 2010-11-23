@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.xml
   def index
-    @clients = Client.all(:order => "alias")
+    @clients = Client.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,7 @@ class ClientsController < ApplicationController
   # GET /clients/1.xml
   def show
     @client = Client.find(params[:id])
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @client }
@@ -80,7 +80,7 @@ class ClientsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-    
+  
   # POST /update_status
   def update_status
     client  = Client.find_by_ip(request.remote_ip.to_s)
@@ -113,45 +113,26 @@ class ClientsController < ApplicationController
   
   # GET /update_graph
   def update_graph
-=begin  
-    #render :text => params.inspect
-    #render :text => "#{DateTime.now.to_s}"
-    #render :inline => "#{DateTime.now.to_s}<br /><%= image_tag\(\"#{params["image"]}\", :size => \"500x300\"\) %>"
-    
-    clients = Client.all
-    
-    #render :text => "#{cpu_usage}"
-    render :update do |page|
-      page.replace_html 'localhost_cpu', :text => "#{DateTime.now.to_s}"
-      #page.replace_html 'localhost_mem', :text => "#{avail_mem}"
-      #clients.each do |client|
-      #  page.replace_html "#{clients.alias}_mem", :text => "#{DateTime.now.to_s}"
-      #end
-    end
-=end    
-    client  = Client.find_by_id(params["client_id"])
-    
+    client    = Client.find_by_id(params["client_id"])    
     statuses  = client.statuses.last(21)
     
-    cpu_string  = "["
-    mem_string  = "["
+    cpu_data  = "["
+    mem_data  = "["
     statuses.each do |s|
-      cpu_string  += s.cpu.to_s
-      cpu_string  += ","
+      cpu_data  += s.cpu.to_s
+      cpu_data  += ","
       
-      mem_string  += s.mem.to_s
-      mem_string  += ","
+      mem_data  += s.mem.to_s
+      mem_data  += ","
     end
-    cpu_string = cpu_string[0..cpu_string.length - 1] + "]"
-    mem_string = mem_string[0..mem_string.length - 1] + "]"
+    cpu_data = cpu_data[0..cpu_data.length - 1] + "]"
+    mem_data = mem_data[0..mem_data.length - 1] + "]"
     
-    #render :text => "#{DateTime.now.to_s}"
-    #render :partial => "cpu_usage", :object => data_string
-#=begin    
-    render :update do |page|
-      page.replace_html 'cpu_usage1', :partial => "cpu_usage", :object => {:canvas_id => "cpu_line", :data => cpu_string, :ymin => 0, :ymax => 100, :ylabel => "CPU Usage (%)"}
-      page.replace_html 'cpu_usage2', :partial => "cpu_usage", :object => {:canvas_id => "mem_line", :data => mem_string, :ymin => 0, :ymax => 2048, :ylabel => "Available Memory (MB)"}
-    end
-#=end
+    render :partial => "graph", 
+      :collection => [{:canvas_id => "cpu_usage_graph", 
+        :data => cpu_data, :ymin => 0, :ymax => 100, :ylabel => "CPU Usage (%)"},
+        {:canvas_id => "available_mem_graph", 
+          :data => mem_data, :ymin => 0, :ymax => 2048, :ylabel => "Available Memory (MB)"}]
+    return    
   end
 end
