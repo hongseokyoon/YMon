@@ -1,0 +1,9 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+YMonClient/YMonClient.suo
+YMonClient/YMonClient/bin/*
+YMonClient/YMonClient/obj/*
+YMonClient/Setup/Debug/*
+YMonClient/Setup/Release/*

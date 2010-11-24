@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20101122051129) do
   create_table "clients", :force => true do |t|
     t.string   "alias"
     t.string   "ip"
+    t.datetime "time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

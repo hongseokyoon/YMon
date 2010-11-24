@@ -81,8 +81,8 @@ class ClientsController < ApplicationController
     end
   end
   
-  # POST /update_status
-  def update_status
+  # POST /dispatch_ymon
+  def dispatch_ymon
     client  = Client.find_by_ip(request.remote_ip.to_s)
 
     if (client == nil)

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YMon3</title>
+  <%= stylesheet_link_tag :all %>  
+  <%= javascript_include_tag :defaults %>
+    
+  <!-- jQuery -->
+  <%= javascript_include_tag "jquery", "rails" %>
+  <%#= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>
+  
+  <!-- RGraph -->
+  <%= javascript_include_tag "rgraph/RGraph.common.core.js" %>
+  <%= javascript_include_tag "rgraph/RGraph.common.context.js" %>
+  <%= javascript_include_tag "rgraph/RGraph.common.annotate.js" %>
+  <%= javascript_include_tag "rgraph/RGraph.common.tooltips.js" %>
+  <%= javascript_include_tag "rgraph/RGraph.common.zoom.js" %>
+  <%= javascript_include_tag "rgraph/RGraph.common.resizing.js" %>
+  <%= javascript_include_tag "rgraph/RGraph.line.js" %>
+  
+  <%= csrf_meta_tag %>
+  <%#= javascript_include_tag "rails" %>  
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

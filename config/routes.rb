@@ -1,7 +1,7 @@
 YMon3::Application.routes.draw do
-  match 'clients/update_graph/:client_id', :to => "clients#update_graph"
-  post 'clients/update_status', :to => "clients#update_status"
   resources :clients
+  get 'clients/update_graph/:client_id', :to => "clients#update_graph"
+  post 'clients/dispatch_ymon', :to => "clients#dispatch_ymon"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

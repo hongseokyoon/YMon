@@ -1,0 +1,9 @@
+<% if graph[:canvas_id] == "cpu_usage_graph" %>
+  <%= Time.now.localtime().strftime("Updated at %Y/%m/%d %H:%M:%S") %>
+<% end %>
+<script>
+  draw_graph('<%= graph[:canvas_id] %>', <%= graph[:data] %>, <%= graph[:ymin] %>, <%= graph[:ymax] %>, '<%= graph[:ylabel] %>');
+</script>
+<br />
+<canvas id="<%= graph[:canvas_id] %>" width="475" height="350"></canvas>
+<br />

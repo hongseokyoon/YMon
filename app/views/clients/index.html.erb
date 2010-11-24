@@ -5,6 +5,9 @@
   <tr>
     <th>Alias</th>
     <th>Ip</th>
+    <th>Last updated at</th>
+    <th>CPU Usage</th>
+    <th>Available memory</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,6 +17,9 @@
   <tr>
     <td><%= client.alias %></td>
     <td><%= client.ip %></td>
+    <td><%= client.statuses.last.time.localtime().strftime("%Y/%m/%d %H:%M:%S") %></td>
+    <td><%= client.statuses.last.cpu.to_s %></td>
+    <td><%= client.statuses.last.mem.to_s %></td>
     <td><%= link_to 'Show', client %></td>
     <td><%= link_to 'Edit', edit_client_path(client) %></td>
     <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -24,5 +30,3 @@
 <br />
 
 <%= link_to 'New Client', new_client_path %>
-
-<canvas id="line9" width="475" height="350">[Please wait...]</canvas> 
